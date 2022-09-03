@@ -1,0 +1,24 @@
+html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    width: 20vw;
+    height: 20vw;
+}
+
+table, td{
+    border: 1px black solid;
+    text-align: center;
+}
+
+td{
+    font-size: 3vw;
+}
+
+form{
+    margin-top: 50px;
+}
+

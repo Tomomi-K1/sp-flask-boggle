@@ -2,24 +2,41 @@
 
 {% block contents%}
 
-<table>
-{% for row in session['board'] %}
-    <tr>   
-    {% for letter in row %}
-    <td>{{letter}}</td>
+<div id="start-game">
+    <p class="timer-section hidden">You have : <span class="timer"></span> second(s) remaining !</p>
+    
+        <button type="submit" id="start">Start the game!</button>
+    
+    <form action="/" class="restart-btn hidden">
+        <button id="play-again" type="submit" >Play Again!</button>
+    </form>
+</div>
 
+<div id="main">
+    <table>
+    {% for row in session['board'] %}
+        <tr>   
+        {% for letter in row %}
+        <td>{{letter}}</td>
+
+        {% endfor %}
+        </tr> 
     {% endfor %}
-    </tr> 
-{% endfor %}
-</table>
+    </table>
 
-<form action="">
-    <label for="guess">Enter Word You Found</label>
-    <input type="text" id ="guess" name="guess">
-    <button type="submit">Submit</button>
-</form>
+    <section> Your Current Score is : 
+    <h3 class="score"></h3>
+    </section>
+    <h3 class="result"></h3>
 
-<h3>{{answer}}</h3>
+    <form id="answerForm" action="#" method="post">
+        <label for="guess">Enter Word You Found</label>
+        <input type="text" id ="guess" name="guess">
+        <button id="submitBtn" type="submit">Submit</button>
+    </form>
 
+    <p>You played this game {{session['visit']}} time(s).</p>
+    <p>Your highest score is {{session['score']}}</p>
+</div>
 
 {% endblock %}

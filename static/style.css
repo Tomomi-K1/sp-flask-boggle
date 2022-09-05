@@ -4,9 +4,22 @@ html{
     align-items: center;
 }
 
+#start-game, #main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 20px auto;
+}
+
+.hidden{
+    display: none;
+}
+
 table{
-    width: 20vw;
-    height: 20vw;
+    width: 200px;
+    height: 200px;
 }
 
 table, td{
@@ -15,7 +28,11 @@ table, td{
 }
 
 td{
-    font-size: 3vw;
+    font-size: 1.5rem;
+}
+
+section{
+    margin-top: 30px;
 }
 
 form{

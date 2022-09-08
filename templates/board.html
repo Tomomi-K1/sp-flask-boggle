@@ -24,19 +24,19 @@
     {% endfor %}
     </table>
 
-    <section> Your Current Score is : 
-    <h3 class="score"></h3>
-    </section>
-    <h3 class="result"></h3>
+    <h3> Your Current Score is : <span class="score"></span></h3>
+    
+    <p class="msg"></p>
+    
 
-    <form id="answerForm" action="#" method="post">
+    <form id="answerForm">
         <label for="guess">Enter Word You Found</label>
         <input type="text" id ="guess" name="guess">
         <button id="submitBtn" type="submit">Submit</button>
     </form>
 
-    <p>You played this game {{session['visit']}} time(s).</p>
-    <p>Your highest score is {{session['score']}}</p>
+    <p>You played this game {{visit}} time(s).</p>
+    <p>Your highest score is {{highscore}}</p>
 </div>
 
 {% endblock %}

@@ -36,6 +36,15 @@ section{
 }
 
 form{
-    margin-top: 50px;
+    margin-top: 30px;
+}
+
+.ok{
+    background-color: green;
+}
+
+.err{
+    background-color: red;
+    
 }
 

@@ -15,25 +15,28 @@ debug = DebugToolbarExtension(app)
 def show_board():
     """setting up sessions & show board"""
     session['board'] = boggle_game.make_board()
-    session['visit'] = session.get('visit', 0)+1
-    session['score'] = session.get('score', 0)  
-    return render_template('board.html', boggle_game = boggle_game)
+    visit = session.get('visit', 0)
+    highscore = session.get('highscore', 0)  
+    return render_template('board.html', boggle_game = boggle_game, visit = visit, highscore =highscore)
 
-@app.route('/check-answer', methods=['POST'])
+@app.route('/check-answer')
 def check_answer():
     """ check if user input is a valid answer """
-    answer = request.get_json()
+    answer = request.args['answer']
     # check if answer is a valid word
-    result = boggle_game.check_valid_word( session['board'], answer['answer'].lower())
-    return {'result' : f'{result}'}
+    result = boggle_game.check_valid_word( session['board'], answer.lower())
+    return jsonify({'result' : result})
 
 @app.route('/store-user-data', methods = ['POST'])
 def store_user_info():
     """ update the highest score in session """
-    data = request.get_json(); 
-    # import pdb
-    # pdb.set_trace()
-    if session['score'] < data['score']:
-        session['score'] = data['score']
-        return {'highest': f"session['score']"}
+    score = request.json['score']; 
+
+    visit = session.get('visit', 0)
+    highscore = session.get('highscore', 0)  
+    
+    session['visit'] = visit+1
+    session['highscore'] = max(score, highscore)
+    
+    return jsonify(brokeRecord = score > highscore)
     

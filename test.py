@@ -57,6 +57,8 @@ class FlaskTests(TestCase):
         resp = self.client.get('/check-answer?answer=impossible')
         #response data is sent by json
         self.assertEqual(resp.json['result'], 'not-on-board')
+        self.assertEqual(response.status_code, 200)
+        # why status code come back as 400?
 
     def non_english_word(self):
         """Test if word is on the board"""
@@ -66,7 +68,7 @@ class FlaskTests(TestCase):
             '/check-answer?answer=fsjdakfkldsfjdslkfjdlksf')
         self.assertEqual(response.json['result'], 'not-word')
 
-
+    # why below test does not work?
     # def test_store_user_data(self):
     #     with self.client as client:
     #         resp = self.client.post('/store-user-data', data = {'score':'10'})
@@ -75,9 +77,6 @@ class FlaskTests(TestCase):
 
     
     
-    # def test_session(self):
-    #     with app.test_client() as client:
-    #         resp = client.get('/')
-
+ 
 
  
